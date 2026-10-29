@@ -19,6 +19,7 @@ import {
 } from 'cvat-core-wrapper';
 import { TaskNotFoundComponent } from 'components/common/not-found';
 import JobListComponent from 'components/task-page/job-list';
+import AnnotationAnalytics from 'components/task-page/annotation-analytics';
 import ModelRunnerModal from 'components/model-runner-modal/model-runner-dialog';
 import CVATLoadingSpinner from 'components/common/loading-spinner';
 import MoveTaskModal from 'components/move-task-modal/move-task-modal';
@@ -151,6 +152,7 @@ function TaskPageComponent(): JSX.Element {
                         onUpdateTaskMeta={onUpdateTaskMeta}
                         labelsEditorProps={labelsEditorProps}
                     />
+                    <AnnotationAnalytics taskId={id} />
                     <JobListComponent task={taskInstance} onJobUpdate={onJobUpdate} />
                 </Col>
             </Row>
