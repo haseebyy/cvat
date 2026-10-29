@@ -55,3 +55,12 @@ WebSocket updates and reconnection (requirements 8–9) are initially deferred d
 Maintain incremental Git commits, document benchmark measurements from five actual runs, complete the Objectives and Definition of Done documents, and record a Loom demonstration of no more than five minutes.
 
 Any unfinished work will be explicitly documented with reasons.
+
+## Decision record: COCO scope and API integration
+
+- Imported a 200-image COCO 2017 validation subset after the 5,000-image import exhausted local resources; subset retained corresponding annotation JSON (1,544 source annotations, 80 categories).
+- Preferred Django ORM over parsing exported COCO files so live class counts come from existing CVAT PostgreSQL models.
+- Defined counting as top-level visible shapes in annotation jobs; this avoids double-counting skeleton child elements and ground truth jobs, but excludes tags/tracks until semantics can be specified and tested.
+- Reused CVAT's task OPA `view` policy for access rather than building a new permissions model.
+- Put the UI chart inside the existing Task Details page for minimal navigation changes.
+- Docker Desktop's WSL crash (`0xc00000fd`) prevented live verification at the time of implementation; record this as an environment blocker rather than a successful test.
